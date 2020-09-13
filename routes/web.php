@@ -39,7 +39,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Students routes
 Route::get('/students', 'StudentController@index')->name('student.index');
+Route::get('/students/{student}', 'StudentController@show')->name('student.show');
 Route::get('/student/create', 'StudentController@create')->name('student.create');
 Route::post('/student/store', 'StudentController@store')->name('student.store');
-Route::get('/student/edit', 'StudentController@edit')->name('student.edit');
-Route::post('/student/update', 'StudentController@update')->name('student.update');
+Route::get('/student/{student}/edit', 'StudentController@edit')->name('student.edit');
+Route::post('/student/{student}/update', 'StudentController@update')->name('student.update');
+Route::post('/student/delete', 'StudentController@destroy')->name('student.destroy');

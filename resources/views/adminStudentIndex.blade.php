@@ -3,7 +3,7 @@
 
 @section('content')
   <div class="text-right">
-    <a href="" class="btn m-2 btn-primary">Create Student</a>
+    <a href="{{route('student.create')}}" class="btn m-2 btn-primary">Create Student</a>
   </div>
   <div class="card">
     <div class="card-header">
@@ -23,12 +23,14 @@
       </thead>
       <tbody>
 
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td scope="col"><a href="" class="btn btn-primary">Edit</a></td>
-          <td scope="col"><a href="" class="btn btn-danger">Delete</a></td>
-        </tr>
+        @foreach ($students as $key => $value)
+          <tr>
+            <th scope="row">{{$value->id}}</th>
+            <td><a href="{{route('student.show',['student'=>$value->id])}}" class="card-link">{{$value->name}}</a></td>
+            <td scope="col"><a href="{{route('student.edit',['student'=>$value->id])}}" class="btn btn-primary">Edit</a></td>
+            <td scope="col"><a href="{{route('student.destroy')}}" class="btn btn-danger">Delete</a></td>
+          </tr>
+        @endforeach
 
       </tbody>
     </table>
