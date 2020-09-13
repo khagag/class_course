@@ -22,17 +22,17 @@ Auth::routes();
 Auth::routes();
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
-Route::get('/login/writer', 'Auth\LoginController@showWriterLoginForm');
+Route::get('/login/student', 'Auth\LoginController@showStudentLoginForm');
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
-Route::get('/register/writer', 'Auth\RegisterController@showWriterRegisterForm');
+Route::get('/register/student', 'Auth\RegisterController@showStudentRegisterForm');
 
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');
-Route::post('/login/writer', 'Auth\LoginController@writerLogin');
+Route::post('/login/student', 'Auth\LoginController@studentLogin');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
-Route::post('/register/writer', 'Auth\RegisterController@createWriter');
+Route::post('/register/student', 'Auth\RegisterController@createStudent');
 
 Route::view('/home', 'home')->middleware('auth');
 Route::view('/admin', 'admin');
-Route::view('/writer', 'writer');
+Route::view('/student', 'student');
 
 Route::get('/home', 'HomeController@index')->name('home');
