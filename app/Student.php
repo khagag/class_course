@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class Student extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
 
     protected $guard = 'student';
     /**
