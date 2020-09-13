@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use \App\Student;
 
 class StudentController extends Controller
@@ -12,6 +14,15 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     protected function validator(array $data)
+     {
+         return Validator::make($data, [
+             'name' => ['required', 'string', 'max:255'],
+             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+             'password' => ['required', 'string', 'min:8', 'confirmed'],
+         ]);
+     }
+
     public function index()
     {
         //
@@ -27,6 +38,7 @@ class StudentController extends Controller
     public function create()
     {
         //
+        return view('adminStudentCreate',['url' => 'admin']);
     }
 
     /**
@@ -38,7 +50,15 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $this->validator($request->all())->validate();
+        $student = Student::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        $request->session()->flash('status','success');
+        return redirect()->route('student.create');
+      }
 
     /**
      * Display the specified resource.
