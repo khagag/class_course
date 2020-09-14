@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class admin
 {
@@ -13,8 +15,14 @@ class admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        return $next($request);
+       if (Auth::check()){
+         if ($guard == "admin" && Auth::guard($guard)->check()) {
+           return $next($request);
+         }
+       }
+
+        return redirect('/');
     }
 }
