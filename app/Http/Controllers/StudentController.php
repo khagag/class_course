@@ -79,9 +79,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
         //
+        return view('adminStudentEdit',['student'=>$student]);
     }
 
     /**
@@ -91,9 +92,13 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
         //
+        $s = Student::find($student->id);
+        $s->update($request->all());
+        session()->flash('status','success');
+        return redirect()->route('student.edit',['student'=>$s]);
     }
 
     /**
