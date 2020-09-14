@@ -138,25 +138,56 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                      <div class="dropdown links">
-                        <a class='dropbtn' href="#">Login</a>
-                        <div class="dropdown-content">
-                          <a href="{{ url('login/student') }}">Student</a>
-                          <a href="{{ url('login/admin') }}">Admin</a>
-                        </div>
-                      </div>
-                        @if (Route::has('register'))
-                            <a href="{{ url('/register/student') }}">Register</a>
-                        @endif
-                    @endauth
+            @if(Auth::guard('admin')->check())
+              <div class="top-right links">
+                <div class="dropdown links">
+                  <a class='dropbtn' href="#">{{ Auth::guard('admin')->user()->name }}</a>
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                  </div>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                  </form>
                 </div>
+              </div>
+            @elseif (Auth::guard('student')->check())
+              <div class="top-right links">
+                <div class="dropdown links">
+                  <a class='dropbtn' href="#">{{ Auth::guard('student')->user()->name }}</a>
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                  </div>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                  </form>
+                </div>
+              </div>
+            @else
+              <div class="top-right links">
+                  @auth
+                      <a href="{{ url('/home') }}">Home</a>
+                  @else
+                    <div class="dropdown links">
+                      <a class='dropbtn' href="#">Login</a>
+                      <div class="dropdown-content">
+                        <a href="{{ url('login/student') }}">Student</a>
+                        <a href="{{ url('login/admin') }}">Admin</a>
+                      </div>
+                    </div>
+                      @if (Route::has('register'))
+                          <a href="{{ url('/register/student') }}">Register</a>
+                      @endif
+                  @endauth
+              </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     <a href="{{route('browse')}}" class="button button3"><h3>Browse Courses</h3></a>
