@@ -24,7 +24,7 @@
               background-size: cover;
             }
             body{
-              background-color: rgba(248, 247, 216, 0.7);
+              background-color: rgba(0, 0, 0, 0.6);
               position: absolute;
               top: 0;
               left: 0;
@@ -61,7 +61,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #c0c3c5;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -73,6 +73,67 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .button {
+              /* background-color: #4CAF50; /* Green */ */
+              border: none;
+              color: white;
+              padding: 16px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              transition-duration: 0.4s;
+              cursor: pointer;
+              }
+
+              .button3 {
+                /* background-color: white; */
+                color: #f44336;
+                border: 2px solid #f44336;
+              }
+
+              .button3:hover {
+                background-color: #f44336;
+                color: white;
+              }
+
+
+              /* Dropdown Button */
+              .dropbtn {
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+              }
+
+              /* The container <div> - needed to position the dropdown content */
+              .dropdown {
+                position: relative;
+                display: inline-block;
+              }
+
+              /* Dropdown Content (Hidden by Default) */
+              .dropdown-content {
+                display: none;
+                position: absolute;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+              }
+
+              /* Links inside the dropdown */
+              .dropdown-content a {
+                color:white;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+              }
+
+              /* Change color of dropdown links on hover */
+              .dropdown-content a:hover {background-color: #ddd;color:#1d2021}
+
+              /* Show the dropdown menu on hover */
+              .dropdown:hover .dropdown-content {display: block;}
         </style>
     </head>
     <body>
@@ -82,10 +143,15 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
+                      <div class="dropdown links">
+                        <a class='dropbtn' href="#">Login</a>
+                        <div class="dropdown-content">
+                          <a href="{{ url('login/student') }}">Student</a>
+                          <a href="{{ url('login/admin') }}">Admin</a>
+                        </div>
+                      </div>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ url('/register/student') }}">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -93,18 +159,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="" class="button button3"><h3>Browse Courses</h3></a>
                 </div>
             </div>
         </div>
