@@ -28,7 +28,12 @@
             <th scope="row">{{$value->id}}</th>
             <td><a href="{{route('student.show',['student'=>$value->id])}}" class="card-link">{{$value->name}}</a></td>
             <td scope="col"><a href="{{route('student.edit',['student'=>$value->id])}}" class="btn btn-primary">Edit</a></td>
-            <td scope="col"><a href="{{route('student.destroy')}}" class="btn btn-danger">Delete</a></td>
+            <td scope="col">
+              <form  action="{{route('student.destroy',['student'=>$value->id])}}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger" >Delete</button>
+                </form>
           </tr>
         @endforeach
 
