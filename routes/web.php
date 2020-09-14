@@ -19,8 +19,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Auth::routes();
-
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
 Route::get('/login/student', 'Auth\LoginController@showStudentLoginForm');
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
@@ -36,7 +34,7 @@ Route::view('/admin', 'admin');
 Route::view('/student', 'student');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::middleware([admin::class])->group(function(){  
+Route::middleware([admin::class])->group(function(){
   // Students routes
   Route::get('/students', 'StudentController@index')->name('student.index');
   Route::get('/students/{student}', 'StudentController@show')->name('student.show');
