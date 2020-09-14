@@ -28,6 +28,7 @@ class CourseController extends Controller
     public function create()
     {
         //
+        return view('adminCourseCreate',['course'=>'']);
     }
 
     /**
@@ -39,6 +40,12 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        $course = new Course();
+        $course->name = $request->name;
+        $course->description = $request->content;
+        $course->save();
+        $request->session()->flash('status','success');
+        return redirect()->route('course.index');
     }
 
     /**
