@@ -28,6 +28,8 @@ class LessonController extends Controller
     public function create()
     {
         //
+        return view('adminLessonCreate');
+
     }
 
     /**
