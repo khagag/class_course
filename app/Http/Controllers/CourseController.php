@@ -19,6 +19,15 @@ class CourseController extends Controller
         return view('adminCourseIndex',['courses'=>$courses]);
 
     }
+    public function browse()
+    {
+        //
+        $courses = Course::all();
+        // $courses = ['lsjkdfl','ksdjfla','lskdjf','lsjkdfl','ksdjfla','lskdjf','lsjkdfl','ksdjfla','lskdjf','lsjkdfl','ksdjfla','lskdjf'];
+
+        return view('courseBrowse',['courses'=>$courses]);
+
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -159,7 +159,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <a href="" class="button button3"><h3>Browse Courses</h3></a>
+                    <a href="{{route('browse')}}" class="button button3"><h3>Browse Courses</h3></a>
                 </div>
             </div>
         </div>

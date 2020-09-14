@@ -40,6 +40,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware([student::class])->group(function(){
   Route::view('/student', 'student')->name('student');
 });
+
+Route::get('/browse/courses', 'CourseController@browse')->name('browse');
+
+
 //admin Routing
 Route::middleware([admin::class])->group(function(){
   Route::view('/admin', 'admin');
