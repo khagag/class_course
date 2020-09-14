@@ -19,6 +19,18 @@
                 height: 100vh;
                 margin: 0;
             }
+            html {
+              background-image: url('https://www.scholastic.com/content/dam/teachers/lesson-plans/2016-2017/everyday-study-skills-lesson-plan-16-9.jpg');
+              background-size: cover;
+            }
+            body{
+              background-color: rgba(248, 247, 216, 0.7);
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
 
             .full-height {
                 height: 100vh;
