@@ -48,7 +48,7 @@ Route::delete('/student/{student}/delete', 'StudentController@destroy')->name('s
 
 // courses routes
 Route::get('/courses', 'courseController@index')->name('course.index');
-Route::get('/courses/{course}', 'courseController@show')->name('course.show');
+Route::get('/course/{course}', 'courseController@show')->name('course.show');
 Route::get('/course/create', 'courseController@create')->name('course.create');
 Route::post('/course/store', 'courseController@store')->name('course.store');
 Route::get('/course/{course}/edit', 'courseController@edit')->name('course.edit');
@@ -57,7 +57,7 @@ Route::delete('/course/{course}/delete', 'courseController@destroy')->name('cour
 
 // lessons routes
 Route::get('/lessons', 'lessonController@index')->name('lesson.index');
-Route::get('/lessons/{lesson}', 'lessonController@show')->name('lesson.show');
+Route::get('/lesson/{lesson}', 'lessonController@show')->name('lesson.show');
 Route::get('/lesson/create', 'lessonController@create')->name('lesson.create');
 Route::post('/lesson/store', 'lessonController@store')->name('lesson.store');
 Route::get('/lesson/{lesson}/edit', 'lessonController@edit')->name('lesson.edit');
