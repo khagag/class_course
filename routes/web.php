@@ -30,11 +30,14 @@ Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 Route::post('/register/student', 'Auth\RegisterController@createStudent');
 
 Route::view('/home', 'home')->middleware('auth');
-Route::view('/admin', 'admin');
-Route::view('/student', 'student');
-
 Route::get('/home', 'HomeController@index')->name('home');
+//Students Routing
+Route::middleware([student::class])->group(function(){
+  Route::view('/student', 'student');
+});
+//admin Routing
 Route::middleware([admin::class])->group(function(){
+  Route::view('/admin', 'admin');
   // Students routes
   Route::get('/students', 'StudentController@index')->name('student.index');
   Route::get('/students/{student}', 'StudentController@show')->name('student.show');
