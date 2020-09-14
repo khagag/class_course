@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\admin;
+use App\Http\Middleware\student;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +36,7 @@ Route::view('/home', 'home')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
 //Students Routing
 Route::middleware([student::class])->group(function(){
-  Route::view('/student', 'student');
+  Route::view('/student', 'student')->name('student');
 });
 //admin Routing
 Route::middleware([admin::class])->group(function(){

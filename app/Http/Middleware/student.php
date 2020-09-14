@@ -17,12 +17,10 @@ class student
      */
     public function handle($request, Closure $next, $guard = null)
     {
-       if (Auth::check()){
-         if ($guard == "student" && Auth::guard($guard)->check()) {
+          $guard = "student";
+         if (Auth::guard($guard)->check()) {
            return $next($request);
          }
-       }
-
         return redirect('/');
     }
 }
