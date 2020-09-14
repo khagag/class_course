@@ -38,7 +38,7 @@ class StudentController extends Controller
     public function create()
     {
         //
-        return view('adminStudentCreate',['url' => 'admin']);
+        return view('adminStudentCreate',['url' => 'student']);
     }
 
     /**
