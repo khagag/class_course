@@ -2,9 +2,6 @@
 
 
 @section('content')
-  <div class="text-right">
-    <a href="" class="btn m-2 btn-primary">Create</a>
-  </div>
   <div class="card">
     <div class="card-header">
       <h5>welcome</h5>
