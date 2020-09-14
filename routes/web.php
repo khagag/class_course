@@ -51,7 +51,7 @@ Route::middleware([admin::class])->group(function(){
   // Students routes
   Route::get('/students', 'StudentController@index')->name('student.index');
   Route::get('/student/create', 'StudentController@create')->name('student.create');
-  Route::get('/students/{student}', 'StudentController@show')->name('student.show');
+  Route::get('/student/{student}', 'StudentController@show')->name('student.show');
   Route::post('/student/store', 'StudentController@store')->name('student.store');
   Route::get('/student/{student}/edit', 'StudentController@edit')->name('student.edit');
   Route::post('/student/{student}/update', 'StudentController@update')->name('student.update');

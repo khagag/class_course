@@ -22,6 +22,10 @@
                 <td>{{$value}}</td>
               </tr>
             @endforeach
+            <tr>
+              <td>No.Courses</td>
+              <td>{{ count($student->courses) }}</td>
+            </tr>
           </tbody>
         </table>
       </div>
